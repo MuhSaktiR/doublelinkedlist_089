@@ -6,7 +6,7 @@ class Node {
 public:
 	int noMhs;
 	string name;
-	Node* name;
+	Node* next;
 	Node* prev;
 };
 
@@ -42,5 +42,11 @@ void DoubleLinkedList::addNode() {
 			cout << "\nDuplicate number not allowed" << endl;
 			return;
 		}
+		newNode->next = START; //Step 3
+		if (START != NULL)
+			START->prev = newNode; //Step 4
+		newNode->prev = NULL; //Step 5
+		START = newNode; //Step 6
+		return;
 	}
 }
