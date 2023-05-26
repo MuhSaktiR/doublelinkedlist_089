@@ -12,7 +12,7 @@ public:
 
 class DoubleLinkedList {
 private:
-	Node* START = NULL;
+	Node* START;
 public:
 	void addNode();
 	bool search(int rollNo, Node** previous, Node** current);
@@ -23,6 +23,10 @@ public:
 	void hapus();
 	void searchData();
 };
+
+DoubleLinkedList::DoubleLinkedList() {
+	START = NULL;
+}
 
 void DoubleLinkedList::addNode() {
 	int nim;
@@ -74,7 +78,7 @@ void DoubleLinkedList::addNode() {
 bool DoubleLinkedList::search(int rollNo, Node** previous, Node** current) {
 	*previous = NULL; //Step 1.a
 	*current = START; //Step 1.b
-	while (*current != NULL && (*current)->noMhs != rollNo) { //Step 1.c
+	while (*current != NULL && rollNo != (*current)->noMhs) { //Step 1.c
 		*previous = *current; //Step 1.d
 		*current = (*current)->next; //Step 1.e
 	}
